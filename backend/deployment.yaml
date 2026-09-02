@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: simple-backend
+  name: simple-backend
+  namespace: app1-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-backend
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: simple-backend
+    spec:
+      containers:
+      - image: devanshu2324/argo-proj-be:v1.0.0
+        name: argocd-custom-project-be
+        ports:
+        - containerPort: 5000
+        resources: {}
+status: {}

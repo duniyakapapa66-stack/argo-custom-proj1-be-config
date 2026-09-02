@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-custom-proj-be
+  namespace: argocd
+spec:
+  project: app1-proj-custom
+  source:
+    repoURL: https://github.com/duniyakapapa66-stack/argo-custom-proj1-be-config.git
+    targetRevision: HEAD
+    path: /backend  # Manifests are stored at the root of the repo
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: app1-ns
+
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true
